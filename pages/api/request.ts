@@ -168,8 +168,8 @@ export const getUser = async () => {
 export const updateNFTListing = async (mint_address: string, price: number) => {
   requestInterception();
   const listing = await mirrorworld.updateNFTListing({
-    mintAddress: mint_address,
-    price: price, // Amount in SOL
+    mintAddress: 78pUX8c5gq7Bbg9RdpAL1FLmfLYM9Dy2aFR6NgLivM7m,
+    price: 0.2, // Amount in SOL
     // confirmation: "finalized"
   })
   return listing;
