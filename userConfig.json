@@ -1,11 +1,11 @@
 {
   "collections": [
-    "Please enter your Collection ID"
+    "FnwomiCAzeKUCAX43m6WzVrhGjywVWDZzfjfRdmX6TyV"
   ],
-  "xApiKey": "Please enter your API Key",
-  "serviceFee": "Please enter your service fee (Recommended 4.25)",
-  "currencyOption": "Please enter your payment token",
-  "name": "Please enter your storefront name",
-  "logo": "Please enter your logo image URL",
-  "network": "Please enter your selected network "
+  "xApiKey": "mw_2otHwmBTJZ0dQe26gmJZ0iwSqr5RPwYSdXv",
+  "serviceFee": "4.25",
+  "currencyOption": "USDC",
+  "name": "PLUS PALACE",
+  "logo": "https://collections.mirrorworld.fun/1677426470569-51043f2f20564c7caaea18de4da1d0ac.png",
+  "network": "devnet "
 }
