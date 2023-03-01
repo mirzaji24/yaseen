@@ -1,47 +1,104 @@
-# Mirror World Marketplace Storefront Template
+# Mirror World Web TypeScript SDK
 
-This repo contains a plug n' play template for the Mirror World SDK Marketplace.
+[Mirror World's](https://mirrorworld.fun/developer) Official TypeScript/JavaScript SDK
 
-## Pre-requisites
-1. Have a developer account on [Mirror World Developer Dashboard](https://app.mirrorworld.fun)
-2. Project API Key (Copy from your project on dashboard)
-3. Collection Addresses (Copy from your project on dashboard)
+## Getting started
+1. Create a developer account at https://app.mirrorworld.fun. Create project and create an API Key.
+2. Install SDK in your project
+
+```bash
+yarn add @mirrorworld/web3.js
+
+#or with npm
+npm install @mirrorworld/web3.js
+```
 
 ## Usage
-### 1. Clone this template repo:
-```sh
-git clone git@github.com:mirrorworld-universe/marketplace-storefront.git
-```
+```ts
+import { MirrorWorld, ClusterEnvironment } from "@mirrorworld/web3.js"
 
-### 2. Install dependencies
-```sh
-yarn install
-```
+const mirrorworld = ref<MirrorWorld>(
+  new MirrorWorld({
+    apiKey: "YOUR_SECRET_API_KEY",
+    env: ClusterEnvironment.testnet, // Can be ClusterEnvionment.mainnet for mainnet
+    clientId: "YOUR_CLIENT_ID"
+  })
+)
 
-### 3. Setup storefront `userConfig.json` variables. Please put your API Key and Collection addresses in this config
-Example config:
-```json
-{
-  "collections": [
-    "Please enter your Collection ID"
-  ],
-  "xApiKey": "Please enter your API Key",
-  "serviceFee": "Please enter your service fee (Recommended 4.25)",
-  "currencyOption": "Please enter your payment token",
-  "name": "Please enter your storefront name",
-  "logo": "Please enter your logo image URL",
-  "network": "Please enter your selected network "
+// Login user with Social Authentication
+async function login() {
+  const { refreshToken } = await mirrorworld.value.login()
 }
 ```
 
+## WebSocket Usage
+```ts
+import Websocket from "@mirrorworld/websocket";
+import { ClusterEnvironment } from "@mirrorworld/web3.js"
 
-###  4. Run dev server
-```sh
-yarn dev
+const websocket = new Websocket({
+   apiKey: "YOUR_SECRET_API_KEY",
+   clientId: "YOUR_CLIENT_ID",
+   env: ClusterEnvironment.testnet
+});
+
+// Establish connection
+websocket.connect();
+
+// Subscribe callback function to a topic
+websocket.onEvent('market_update', (data) => console.log(data));
 ```
 
-### 5. That's it! Deploy your static site!
-You can deploy yoru Next.js site using [Vercel](https://vercel.com) or [Netlify](https://netlify.com), or [Cloudflare Pages](https://pages.cloudflare.dev).
+## Full API Documentation
+You can view the documentation for Mirror World SDK for Mobile on our [Official Documentation Site](https://docs.mirrorworld.fun/overview/introduction)
 
-## LICENSE
+## Features:
+1. Authentication
+    1. Social Authentication
+    2. Login with Email/Password
+2. Marketplace
+   1. Get current user's NFTs
+   2. Mint NFTs
+   3. List NFTs
+   4. Buy NFTs
+   5. Cancel Listing
+   6. Update Listing
+   7. Transfer NFT
+   8. Query NFTs by owners
+   9. Query NFTs by creator addresses
+   10. Query NFTs by update authorities
+   11. Get NFT details
+3. Wallet
+    1. Get account activity
+    2. Get account tokens
+    3. Transfer SPL Tokens
+    4. Transfer SOL
+
+## Get Started Today
+1. Go to [Mirror World Developer Dashboard](https://app.mirrorworld.fun) and create a project, create an application.
+2. Install Mirror World SDK Demo for Javascript using `yarn install @mirrorworld/web3.js` and start building.
+
+## Roadmap
+See Roadmap here:
+1. **Wallet**
+   - [-] Transaction signing (In progress)
+   - [-] Crypto On-ramping (In progress)
+2. **Marketplace**
+   - [-] Create Marketplace Instance (In progress)
+   - [-] Collection indexing and querying (In progress)
+3. **Cross-chain Support**
+   - [ ] Ethereum Support
+   - [ ] Polygon Support
+   - [ ] Aptos Support
+   - [ ] Sui Support
+
+## Community
+- **Discord**: [Join Discord](https://discord.com/invite/Vxrw4rqaDM)
+- **Twitter**: [Follow us](https://twitter.com/joinmirrorworld)
+- **Telegram Group**: [Join](https://t.me/mirrorworld_sdk)
+- **Telegram Channel**: [Subscribe](https://t.me/mirrorworld_news)
+
+## Licence
 MIT License
+
+Copyright (c) 2021 Mirror World Inc.
